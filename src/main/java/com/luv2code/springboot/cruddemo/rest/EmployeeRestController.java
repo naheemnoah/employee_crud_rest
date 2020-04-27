@@ -18,7 +18,6 @@ import com.luv2code.springboot.cruddemo.service.EmployeeService;
 
 
 @RestController
-@RequestMapping("/api")
 public class EmployeeRestController {
 
 	private EmployeeService employeeService;
