@@ -49,12 +49,10 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.webjars/hal-explorer -->
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>hal-explorer</artifactId>
-    <version>0.11.0</version>
-</dependency>
+		<dependency>
+      		<groupId>org.springframework.data</groupId>
+     	 	<artifactId>spring-data-rest-hal-browser</artifactId>
+    	</dependency>
 	</dependencies>
 
 	<build>
@@ -64,7 +62,17 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			
-      		
+      		<plugin>
+		        <groupId>com.heroku.sdk</groupId>
+		        <artifactId>heroku-maven-plugin</artifactId>
+		        <version>3.0.2</version>
+		        <configuration>
+  					<appName>employ</appName>
+  					<processTypes>
+     					<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+  					</processTypes>
+				</configuration>
+      	</plugin>
     	</plugins>
 	</build>
 
