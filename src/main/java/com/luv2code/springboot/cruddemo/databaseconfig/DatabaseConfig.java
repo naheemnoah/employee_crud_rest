@@ -23,6 +23,22 @@ public class DatabaseConfig {
 	
 	@Value("${spring.datasource.driver}")
 	private String driver;
+	
+	
+	@Value("${spring.datasource.maxActive}")	
+	private int maxActive;
+	
+	@Value("${spring.datasource.maxIdle}")
+	private int maxIdle;
+	
+	@Value("${spring.datasource.minIdle}")
+	private int minIdle;
+	
+	@Value("${spring.datasource.initialSize}")
+	private int initialSize;
+	
+	@Value("${spring.datasource.removeAbandoned}")
+	private boolean removeAbandoned;
 
     @Bean
     public DataSource dataSource() {
@@ -31,6 +47,8 @@ public class DatabaseConfig {
         config.setUsername(username);
         config.setPassword(password);
         config.setDriverClassName(driver);
+        config.setMaximumPoolSize(maxActive);
+        config.setMinimumIdle(minIdle);
         return new HikariDataSource(config);
     }
 }
